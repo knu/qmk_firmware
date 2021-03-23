@@ -11,6 +11,7 @@ enum layers {
 #define LGUI_EISUU	MT(MOD_LGUI,KC_LANG2)
 #define LALT_DEL	MT(MOD_LALT,KC_DEL)
 #define RALT_KANA	MT(MOD_RALT,KC_LANG1)
+#define RAISE_ENT	LT(RAISE,KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -22,9 +23,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,              KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT,
     LSFT_GRAVE,KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,              KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   RSFT_BSLS,
                           KC_EQL,    KC_LBRC,                                                       KC_GRAVE,  KC_RBRC,
-                                                KC_SPC,    LGUI_EISUU,        KC_ENT,    KC_BSPC,
+                                                KC_SPC,    LGUI_EISUU,        RAISE_ENT, KC_BSPC,
                                                 LALT_DEL,  KC_HOME,           KC_PGUP,   RALT_KANA,
-                                                TT(LOWER), KC_END,            KC_PGDN,   TT(RAISE)
+                                                TT(LOWER), KC_END,            KC_PGDN,   TT(LOWER)
   ),
 
   [LOWER] = LAYOUT_6x6(
@@ -36,20 +37,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   _______,           _______,   KC_P1,     KC_P2,     KC_P3,     KC_PLUS,   KC_EQL,
                           _______,   KC_PSCR,                                                       KC_P0,     KC_DOT,
                                                 _______,   _______,           _______,   _______,
-                                                _______,   RESET,             _______,   _______,
+                                                _______,   RESET,             RESET,     _______,
                                                 _______,   _______,           _______,   _______
   ),
 
   [RAISE] = LAYOUT_6x6(
 
     KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,             KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12 ,
-    _______,   _______,   _______,   _______,   _______,   KC_LBRC,           KC_RBRC,   _______,   KC_NLCK,   KC_INS,    KC_SLCK,   KC_MUTE,
-    _______,   KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_LPRN,           KC_RPRN,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   KC_VOLU,
-    _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   _______,   KC_VOLD,
+    _______,   _______,   _______,   _______,   _______,   KC_LBRC,           KC_RBRC,   _______,   _______,   _______,   _______,   _______,
+    _______,   _______,   _______,   _______,   _______,   KC_LPRN,           KC_RPRN,   KC_NLCK,   KC_SLCK,   KC_PSCR,   _______,   _______,
+    _______,   _______,   _______,   _______,   _______,   _______,           _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   _______,
     _______,   KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   _______,           _______,   KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   _______,
-                          _______,   _______,                                                       _______,   _______,
+                          _______,   _______,                                                       KC_DOWN,   KC_UP,
                                                 _______,   _______,           _______,   _______,
-                                                KC_INS,    _______,           RESET,     _______,
+                                                KC_INS,    _______,           _______,   _______,
                                                 _______,   _______,           _______,   _______
   ),
 
