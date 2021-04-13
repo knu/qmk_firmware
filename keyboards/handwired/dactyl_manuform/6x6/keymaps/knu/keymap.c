@@ -4,10 +4,12 @@ enum layers {
   QWERTY,
   LOWER,
   RAISE,
+  EMACS,
 };
 
 enum custom_keycodes {
   CK_DBLZERO = SAFE_RANGE,
+  CK_KILL,
 };
 
 #define LSFT_GRAVE	MT(MOD_LSFT,KC_GRAVE)
@@ -36,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   _______,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   KC_SLSH,   KC_BSPC,
-    _______,   _______,   _______,   _______,   _______,   KC_LBRC,           KC_MINS,   KC_P7,     KC_P8,     KC_P9,     KC_ASTR,   _______,
+    _______,   TO(QWERTY),_______,   _______,   _______,   KC_LBRC,           KC_MINS,   KC_P7,     KC_P8,     KC_P9,     KC_ASTR,   _______,
     _______,   _______,   _______,   _______,   _______,   KC_LPRN,           KC_C,      KC_P4,     KC_P5,     KC_P6,     KC_MINS,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,           KC_BSPC,   KC_P1,     KC_P2,     KC_P3,     KC_PLUS,   KC_EQL,
                           _______,   KC_PSCR,                                                       KC_0,      KC_DOT,
@@ -50,11 +52,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   _______,   _______,
     _______,   _______,   _______,   _______,   _______,   KC_LBRC,           KC_RBRC,   KC_NLCK,   KC_SLCK,   KC_PSCR,   _______,   _______,
     _______,   _______,   _______,   _______,   _______,   KC_LPRN,           KC_RPRN,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   _______,
-    _______,   _______,   _______,   _______,   _______,   _______,           KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_ENTER,  _______,
+    MO(EMACS), _______,   _______,   _______,   _______,   _______,           KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_ENTER,  _______,
     _______,   _______,   _______,   _______,   _______,   _______,           KC_HOME,   KC_PGDN,   KC_PGUP,   KC_END,    KC_ESC,    _______,
                           _______,   _______,                                                       _______,   _______,
                                                 _______,   _______,           _______,   _______,
                                                 KC_INS,    _______,           _______,   _______,
+                                                _______,   _______,           _______,   _______
+  ),
+
+  [EMACS] = LAYOUT_6x6(
+
+    _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   _______,   _______,
+    _______,   S(KC_1),   S(KC_2),   S(KC_3),   S(KC_4),   S(KC_5),           S(KC_6),   S(KC_7),   S(KC_8),   S(KC_9),   S(KC_0),   _______,
+    _______,   C(KC_Q),   C(KC_W),   KC_END,    C(KC_R),   C(KC_T),           C(KC_Y),   C(KC_U),   KC_TAB,    C(KC_O),   KC_UP,     _______,
+    _______,   KC_HOME,   C(KC_S),   KC_DEL,    KC_RIGHT,  KC_ESC,            KC_BSPC,   S(KC_ENT), CK_KILL,   C(KC_L),   _______,   _______,
+    _______,   C(KC_Z),   C(KC_X),   C(KC_C),   KC_PGDN,   KC_LEFT,           KC_DOWN,   KC_ENT,    _______,   _______,   _______,   _______,
+                          _______,   _______,                                                       _______,   _______,
+                                                _______,   _______,           _______,   _______,
+                                                _______,   _______,           _______,   _______,
                                                 _______,   _______,           _______,   _______
   ),
 
@@ -65,6 +80,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CK_DBLZERO:
         if (record->event.pressed) {
             SEND_STRING("00");
+        }
+        break;
+    case CK_KILL:
+        if (record->event.pressed) {
+            register_code(KC_LSFT);
+            tap_code(KC_END);
+            unregister_code(KC_LSFT);
+            tap_code(KC_DEL);
         }
         break;
     }
