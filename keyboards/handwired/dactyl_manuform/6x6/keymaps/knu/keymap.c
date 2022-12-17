@@ -39,9 +39,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   _______,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,           _______,   _______,   _______,   _______,   KC_SLSH,   KC_BSPC,
-    _______,   _______,   _______,   _______,   _______,   _______,           KC_MINS,   KC_P7,     KC_P8,     KC_P9,     KC_ASTR,   _______,
-    _______,   _______,   _______,   _______,   _______,   TG(GAME),          KC_C,      KC_P4,     KC_P5,     KC_P6,     KC_MINS,   _______,
-    _______,   _______,   _______,   _______,   _______,   _______,           KC_BSPC,   KC_P1,     KC_P2,     KC_P3,     KC_PLUS,   KC_EQL,
+    _______,   HYPR(KC_Q),HYPR(KC_W),HYPR(KC_E),HYPR(KC_R),HYPR(KC_T),        KC_MINS,   KC_P7,     KC_P8,     KC_P9,     KC_ASTR,   _______,
+    _______,   HYPR(KC_A),HYPR(KC_S),HYPR(KC_D),HYPR(KC_F),TG(GAME),          KC_C,      KC_P4,     KC_P5,     KC_P6,     KC_MINS,   _______,
+    _______,   HYPR(KC_Z),HYPR(KC_X),HYPR(KC_C),HYPR(KC_V),HYPR(KC_B),        KC_BSPC,   KC_P1,     KC_P2,     KC_P3,     KC_PLUS,   KC_EQL,
                           _______,   KC_PSCR,                                                       KC_0,      KC_DOT,
                                                 _______,   _______,           _______,   _______,
                                                 _______,   RESET,             RESET,     _______,
