@@ -15,9 +15,9 @@ enum custom_keycodes {
 
 #define LSFT_GRAVE	MT(MOD_LSFT,KC_GRAVE)
 #define RSFT_BSLS	MT(MOD_RSFT,KC_BSLS)
-#define LGUI_EISUU	MT(MOD_LGUI,KC_LANG2)
+#define LGUI_EISUU	MT(MOD_LGUI,KC_LNG2)
 #define LALT_DEL	MT(MOD_LALT,KC_DEL)
-#define RALT_KANA	MT(MOD_RALT,KC_LANG1)
+#define RALT_KANA	MT(MOD_RALT,KC_LNG1)
 #define RAISE_ENT	LT(RAISE,KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   HYPR(KC_Z),HYPR(KC_X),HYPR(KC_C),HYPR(KC_V),HYPR(KC_B),        KC_BSPC,   KC_P1,     KC_P2,     KC_P3,     KC_PLUS,   KC_EQL,
                           _______,   KC_PSCR,                                                       KC_0,      KC_DOT,
                                                 _______,   _______,           _______,   _______,
-                                                _______,   RESET,             RESET,     _______,
+                                                _______,   QK_BOOT,           QK_BOOT,   _______,
                                                 _______,   _______,           _______,   _______
   ),
 
